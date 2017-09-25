@@ -40,4 +40,4 @@ class Solution(object):
         else:
             return self.findkth(A[:i], B[j:], i) # when looking for kth smallest, j elements removed from k (from front of B), so the new k is k - j = i
 
-O(log(min(m, n))) 85 ms
+# O(log(min(m, n))) 85 ms
