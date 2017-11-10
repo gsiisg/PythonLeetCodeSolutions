@@ -43,7 +43,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         # events are the (beginning, -height, ending) of buildings sorted in ascending order
-        # Must place negative height as 2nd element so all the 0 height comes at the end
+        # Must place negative height as 2nd element so all the 0 height comes at the end when sorted
         # this is needed so that ending of a building and beginning of building with same height
         # does not add extra 'result' element
         # use negative height for later (negative since python uses min heap)
