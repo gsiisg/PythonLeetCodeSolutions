@@ -18,14 +18,15 @@ class Solution(object):
         water = 0
         maxleft, maxright = height[left], height[right]
         while left < right: # while the two indices do not cross
-            if maxleft < maxright: # if the max height of the right side is higher, left side can continue to increment and trap rain water at the max left height
+            if maxleft < maxright: # if the maxright is higher, left side can continue to increment and trap rain water below maxleft
                 water += maxleft - height[left]
                 left += 1
-                maxleft = max(maxleft, height[left])
-            else: # if the max height of the left side is higher, right side can continue to decrement and trap rain water at the max right height
+                maxleft = max(maxleft, height[left]) # after trapping rain, update maxleft
+            else: # if maxleft is higher, right side can continue to decrement and trap rain water below maxright
                 water += maxright - height[right]
                 right -= 1
-                maxright = max(maxright, height[right])
+                maxright = max(maxright, height[right]) # after trapping rain, update maxright
         return water
 
 # O(n) 42 ms
+
