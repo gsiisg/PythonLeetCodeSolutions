@@ -11,6 +11,8 @@ If you have figured out the O(n) solution, try coding another solution using the
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
+
+        # This is Kadane's Algorithm
         if max(nums) < 0:
             return max(nums)
         global_max, local_max = float('-inf'), 0
@@ -18,4 +20,19 @@ class Solution:
             local_max = max(0, local_max + x)
             global_max = max(global_max, local_max)
         return global_max
-    
+
+# This is faster than Kadane's Algo   
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        
+        best_sum = nums[0]
+        current_sum = 0
+
+        for num in nums:
+            if current_sum < 0:
+                current_sum = 0
+            current_sum += num
+
+            best_sum = max(best_sum, current_sum)
+
+        return best_sum
