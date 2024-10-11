@@ -14,15 +14,27 @@ class Solution:
 
         # return min_sum
 
-        # use the min total of 2 from earlier row to pair with current row
-        row_nums = len(triangle)-1
-        prev_row = triangle[row_nums]
-        for row in range(row_nums-1,-1,-1):
-            curr_row = []
-            # print(f'on row {row}')
-            for i in range(len(triangle[row])):
-                curr_row.append(triangle[row][i] + min(prev_row[i],prev_row[i+1]))
-            # print(f'min sum is {curr_row}')
-            prev_row = curr_row
 
-        return prev_row[0]
+
+        # # use the min total of 2 from earlier row to pair with current row
+        # row_nums = len(triangle)-1
+        # prev_row = triangle[row_nums]
+        # for row in range(row_nums-1,-1,-1):
+        #     curr_row = []
+        #     # print(f'on row {row}')
+        #     for i in range(len(triangle[row])):
+        #         curr_row.append(triangle[row][i] + min(prev_row[i],prev_row[i+1]))
+        #     # print(f'min sum is {curr_row}')
+        #     prev_row = curr_row
+
+        # return prev_row[0]
+
+
+
+        # simplified
+        num_rows = len(triangle)
+        for row in range(num_rows-2,-1,-1):
+            for i in range(len(triangle[row])):
+                triangle[row][i] += min(triangle[row+1][i], triangle[row+1][i+1])
+
+        return triangle[0][0] 
